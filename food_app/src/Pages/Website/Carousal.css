@@ -1,0 +1,15 @@
+.react-multi-carousel-dot button {
+  background: var(--yellow);
+  border: 2px solid white;
+}
+.react-multi-carousel-dot button:active,
+.react-multi-carousel-dot button:focus,
+.react-multi-carousel-dot button:hover {
+  background: var(--bg);
+}
+.react-multi-carousel-dot--active button {
+  background: var(--pink);
+}
+.carousel-container {
+  height: 50%;
+}

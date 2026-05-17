@@ -1,0 +1,419 @@
+.recipe-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.recipe-modal-root .recipe-modal__backdrop,
+.recipe-modal-root .recipe-modal {
+  pointer-events: auto;
+}
+
+.recipe-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(15, 18, 25, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.recipe-modal > form {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.recipe-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: min(720px, calc(100vw - 2rem));
+  max-height: min(calc(100vh - 2rem), 880px);
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 18, 25, 0.08);
+  box-shadow:
+    0 24px 48px rgba(15, 18, 25, 0.14),
+    0 4px 12px rgba(15, 18, 25, 0.06);
+  overflow: hidden;
+}
+
+.recipe-modal__header,
+.recipe-modal__tabs {
+  flex-shrink: 0;
+}
+
+.recipe-modal--compact {
+  width: min(100%, calc(100vw - 1.25rem));
+  max-height: calc(100vh - 1.25rem);
+}
+
+.recipe-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px solid #eceef2;
+  background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+}
+
+.recipe-modal__eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.recipe-modal__title {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: #111827;
+}
+
+.recipe-modal__subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+  max-width: 42ch;
+}
+
+.recipe-modal__close {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  color: #6b7280;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.recipe-modal__close:hover {
+  background: #fef2f4;
+  border-color: #fecdd3;
+  color: var(--pink);
+}
+
+.recipe-modal__tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid #eceef2;
+  background: #fafbfc;
+}
+
+.recipe-modal__tab {
+  margin-bottom: -1px;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.recipe-modal__tab:hover {
+  color: #111827;
+}
+
+.recipe-modal__tab--active {
+  color: var(--pink);
+  border-bottom-color: var(--pink);
+}
+
+.recipe-modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.25rem 1.5rem 1rem;
+}
+
+.recipe-modal__ai-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #e8eaf0;
+  background: linear-gradient(135deg, #fff9fb 0%, #f8fafc 100%);
+}
+
+.recipe-modal__ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(225, 38, 83, 0.1);
+  color: var(--pink);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.recipe-modal__ai-hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.recipe-modal__ai-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.recipe-modal__ai-row--single {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 600px) {
+  .recipe-modal__ai-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recipe-modal__section {
+  margin-bottom: 1.25rem;
+}
+
+.recipe-modal__section-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #374151;
+}
+
+.recipe-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.875rem;
+}
+
+.recipe-modal__field:last-child {
+  margin-bottom: 0;
+}
+
+.recipe-modal__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.recipe-modal__input,
+.recipe-modal__textarea,
+.recipe-modal__file {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #fff;
+  color: #111827;
+  font-size: 0.9375rem;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.recipe-modal__input:focus,
+.recipe-modal__textarea:focus,
+.recipe-modal__file:focus {
+  outline: none;
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px rgba(225, 38, 83, 0.12);
+}
+
+.recipe-modal__textarea {
+  min-height: 4.5rem;
+  resize: vertical;
+}
+
+.recipe-modal__textarea--step {
+  min-height: 3.25rem;
+  padding-right: 2.5rem;
+}
+
+.recipe-modal__file {
+  padding: 0.55rem 0.85rem;
+  font-size: 0.875rem;
+}
+
+.recipe-modal__file-hint {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.recipe-modal__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.recipe-modal__step {
+  position: relative;
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.recipe-modal__step-num {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.recipe-modal__step-input-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.recipe-modal__step-remove {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.recipe-modal__step-remove:hover {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.recipe-modal__footer {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 1.25rem;
+  border-top: 1px solid #eceef2;
+  background: #fafbfc;
+}
+
+.recipe-modal__footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.recipe-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0 1.1rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.recipe-modal__btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.recipe-modal__btn--ghost {
+  background: #fff;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.recipe-modal__btn--ghost:hover:not(:disabled) {
+  background: #f9fafb;
+}
+
+.recipe-modal__btn--primary {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
+}
+
+.recipe-modal__btn--primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.recipe-modal__btn--ai {
+  background: #111827;
+  border-color: #111827;
+  color: #fff;
+}
+
+.recipe-modal__btn--ai:hover:not(:disabled) {
+  background: #1f2937;
+}
+
+.recipe-modal__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 280px;
+  color: #6b7280;
+  font-size: 0.9375rem;
+}
+
+.recipe-modal__preview-img {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  margin-top: 0.5rem;
+}
