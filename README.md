@@ -2,16 +2,17 @@
 
 A full-stack recipe app: browse and share recipes, manage your own, and optionally generate recipes with local AI (Ollama).
 
-**Repo:** [github.com/shristi-kush/forky](https://github.com/shristi-kush/forky)
+**Repo:** [github.com/shristi-kush/forky](https://github.com/shristi-kush/forky)  
+**Demo:** [Watch demo video](https://drive.google.com/file/d/1tcRQAX6-dOsi35_qVbHv5y0-CLzZFM_Y/view?usp=sharing)
 
 ## Stack
 
-| Layer | Folder | Tech |
-|--------|--------|------|
-| Frontend | `food_app/` | React 18 (Create React App), React Router |
-| Backend | `backend-flask/` | Flask, SQLAlchemy, SQLite |
-| Images | — | Cloudinary |
-| AI (optional) | — | Ollama (`qwen2.5:3b` by default) |
+| Layer         | Folder           | Tech                                      |
+| ------------- | ---------------- | ----------------------------------------- |
+| Frontend      | `food_app/`      | React 18 (Create React App), React Router |
+| Backend       | `backend-flask/` | Flask, SQLAlchemy, SQLite                 |
+| Images        | —                | Cloudinary                                |
+| AI (optional) | —                | Ollama (`qwen2.5:3b` by default)          |
 
 ## Features
 
@@ -92,25 +93,25 @@ OLLAMA_MODEL=qwen2.5:3b
 
 ## API overview
 
-| Method | Path | Description |
-|--------|------|-------------|
-| POST | `/user/register` | Create account |
-| POST | `/user/login` | Log in |
-| GET | `/recipes/all` | List recipes |
-| POST | `/recipes/create` | Create recipe |
-| POST | `/recipes/update` | Update recipe |
-| POST | `/recipes/delete/<id>` | Delete recipe |
-| POST | `/recipes/generate` | AI-generate recipe JSON |
+| Method | Path                   | Description             |
+| ------ | ---------------------- | ----------------------- |
+| POST   | `/user/register`       | Create account          |
+| POST   | `/user/login`          | Log in                  |
+| GET    | `/recipes/all`         | List recipes            |
+| POST   | `/recipes/create`      | Create recipe           |
+| POST   | `/recipes/update`      | Update recipe           |
+| POST   | `/recipes/delete/<id>` | Delete recipe           |
+| POST   | `/recipes/generate`    | AI-generate recipe JSON |
 
 ## Frontend routes
 
-| Path | Page |
-|------|------|
-| `/site` | Landing |
-| `/` | Home / recipes |
-| `/login` | Login |
-| `/signup` | Signup |
-| `/profile` | Profile |
+| Path       | Page           |
+| ---------- | -------------- |
+| `/site`    | Landing        |
+| `/`        | Home / recipes |
+| `/login`   | Login          |
+| `/signup`  | Signup         |
+| `/profile` | Profile        |
 | `/details` | Recipe details |
 
 ## Scripts
